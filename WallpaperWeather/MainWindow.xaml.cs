@@ -24,5 +24,13 @@ namespace WallpaperWeather
         {
             InitializeComponent();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //Passthrough to handler
+            TrayHandler.MinimizeToTray(this, e);
+        }
+
+        
     }
 }
