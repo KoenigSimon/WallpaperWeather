@@ -53,3 +53,6 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+//allow testing from external project without setting classes to public
+[assembly: InternalsVisibleTo("WallpaperWeatherTests")]

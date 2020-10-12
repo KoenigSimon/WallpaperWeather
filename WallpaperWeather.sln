@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1259
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallpaperWeather", "WallpaperWeather\WallpaperWeather.csproj", "{3832DB77-5204-40F1-9B26-4D9C91E0A4E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallpaperWeatherTests", "WallpaperWeatherTests\WallpaperWeatherTests.csproj", "{904C6A79-2D9C-4023-9FBB-0FFB1A7B8C0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3832DB77-5204-40F1-9B26-4D9C91E0A4E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3832DB77-5204-40F1-9B26-4D9C91E0A4E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3832DB77-5204-40F1-9B26-4D9C91E0A4E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904C6A79-2D9C-4023-9FBB-0FFB1A7B8C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904C6A79-2D9C-4023-9FBB-0FFB1A7B8C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904C6A79-2D9C-4023-9FBB-0FFB1A7B8C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904C6A79-2D9C-4023-9FBB-0FFB1A7B8C0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 
 namespace WallpaperWeather
-{
+{    
     static class PathHandling
     {
         public static string GetCachePath()
@@ -16,5 +16,5 @@ namespace WallpaperWeather
             Directory.CreateDirectory(specificFolder);
             return specificFolder;
         }
-    }
+    }    
 }
