@@ -23,6 +23,8 @@ namespace WallpaperWeather
         public MainWindow()
         {
             InitializeComponent();
+
+            ImageCacheLoader.LoadImagesFromCache(Scroll);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -30,7 +32,5 @@ namespace WallpaperWeather
             //Passthrough to handler
             TrayHandler.MinimizeToTray(this, e);
         }
-
-        
     }
 }
