@@ -12,12 +12,22 @@ namespace WallpaperWeather
 {
     static class ImageCacheLoader
     {
-        private static string basePath = "../../ImageCache/";
-
         public static void LoadImagesFromCache(ScrollViewer rootElement)
         {
-            string[] filePaths = Directory.GetFiles(basePath, "*.jpg");
-            GenerateList(filePaths, rootElement);
+            string cachePath = PathHandling.GetCachePath();
+            string[] filePaths = Directory.GetFiles(cachePath, "*.jpg");
+
+            if(filePaths.Length == 0)
+            {
+                //no cached files notification
+                Label noCacheLabel = new Label();
+                noCacheLabel.Content = "No cached files";
+                rootElement.Content = noCacheLabel;
+            }
+            else
+            {
+                GenerateList(filePaths, rootElement);
+            }            
         }
 
         private static void GenerateList(string[] filePaths, ScrollViewer rootElement)
@@ -29,7 +39,8 @@ namespace WallpaperWeather
             for (int i = 0; i < filePaths.Length; i++)
             {
                 Image img = new Image();
-                img.Width = 250;
+                img.Width = 300;
+                img.SnapsToDevicePixels = true;
                 BitmapImage image = new BitmapImage();
                 image.BeginInit();
                 image.CacheOption = BitmapCacheOption.OnLoad;
@@ -54,8 +65,8 @@ namespace WallpaperWeather
             List<Image> childList = target.Children.Cast<Image>().ToList();
 
             double rootWidth = target.ActualWidth;
-            int elementCountPerRow = (int)(rootWidth / 250);
-            if (rootWidth <= 250) elementCountPerRow = 1;
+            int elementCountPerRow = (int)(rootWidth / 300);
+            if (rootWidth <= 300) elementCountPerRow = 1;
             double elementWidth = rootWidth / elementCountPerRow;
 
             foreach(Image elem in childList)
@@ -66,7 +77,7 @@ namespace WallpaperWeather
 
         private static void MouseDown(Image sender)
         {
-
+            //select image for more options
         }
 
         private static void MouseEnter(Image sender)
