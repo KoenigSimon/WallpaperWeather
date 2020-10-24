@@ -41,9 +41,15 @@
                         <ComboBoxItem>Mock2</ComboBoxItem>
                     </ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Button Padding="10">Bild Löschen</Button>
+                    <Label>Jahreszeit</Label>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem IsSelected="True">Mock1</ComboBoxItem>
+                        <ComboBoxItem>Mock2</ComboBoxItem>
+                    </ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox>
+                    <Button Padding="10" Click="ClickDeleteImage">Bild Löschen</Button>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <CheckBox IsChecked="{Binding Path=chkBxBanUse}">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
@@ -74,45 +80,45 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <Image Grid.Row="0" Grid.Column="1" Margin="10"></Image>
+                        <Image Grid.Row="0" Grid.Column="1" Margin="10" Source="{Binding Path=weatherIcon, Mode=OneWay}"></Image>
                         <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
-                            <TextBlock>22°C</TextBlock>
+                            <TextBlock Text="{Binding Path=temperature, Mode=TwoWay}">22°C</TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
-                            <TextBlock>Ort</TextBlock>
+                            <TextBlock Text="{Binding Path=city, Mode=TwoWay}">Stadt/Ort</TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
-                            <TextBlock>Uhrzeit</TextBlock>
+                            <TextBlock Text="{Binding Path=time, Mode=TwoWay}">Uhrzeit</TextBlock>
                         </Viewbox>
 
                     </Grid>
 
                     <StackPanel Grid.Row="1" Margin="10">
-                        <Button Padding="10">Externe Bilder Laden</Button>
+                        <Button Padding="10" Click="ClickImportImages">Externe Bilder Laden</Button>
                         <Grid Margin="0, 0, 0, 10"></Grid>
-                        <Label>Zeitzone</Label>
+                        <Label Content="{Binding Path=timeZone, Mode=TwoWay}"></Label>
                         <Grid Margin="0, 0, 0, 10"></Grid>
-                        <TextBox Padding="10">PLZ</TextBox>
+                        <TextBox Padding="10" Text="{Binding Path=plz, Mode=TwoWay}"></TextBox>
                     </StackPanel>
                     
                 </Grid>
 
                 <StackPanel Grid.Column="1" Margin="10">
-                    <CheckBox>
+                    <CheckBox IsChecked="{Binding Path=chkBxStartWithWindows, Mode=TwoWay}">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
                         Mit Windows Starten
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox>
+                    <CheckBox IsChecked="{Binding Path=chkBxChangeInBackground, Mode=TwoWay}">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
                         Nur im Hintergrund überblenden
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox>
+                    <CheckBox IsChecked="{Binding Path=chkBxAutoImageSearch, Mode=TwoWay}">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
@@ -124,13 +130,13 @@
                             <ColumnDefinition Width="0.5*"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBox Padding="10" Grid.Column="0">15</TextBox>
+                        <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=maxImageCount, Mode=TwoWay}"></TextBox>
                         <TextBlock Padding="10"  Grid.Column="1">Maximale anzahl an Bildern</TextBlock>
                     </Grid>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Button Padding="10">Gesamten Bildcache Löschen</Button>
+                    <Button Padding="10" Click="ClickClearCache">Gesamten Bildcache Löschen</Button>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Button Padding="10">Programm Beenden</Button>
+                    <Button Padding="10" Click="ClickExit">Programm Beenden</Button>
                 </StackPanel>
                 
             </Grid>
