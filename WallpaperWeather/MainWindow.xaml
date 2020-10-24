@@ -5,19 +5,137 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WallpaperWeather"
         mc:Ignorable="d"
-        Title="MainWindow" Height="376" Width="581" Closing="Window_Closing">
+        Title="MainWindow" Height="771" Width="1420" Closing="Window_Closing">
 
-    <Grid x:Name="MainGrid">
+    <Grid x:Name="MainGrid" Background="#525559">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Visible" x:Name="Scroll">
-            
-        </ScrollViewer>
-        
-        
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Visible" x:Name="Scroll"></ScrollViewer>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1.5*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.77*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0"  Margin="10" Stretch="Uniform" />
+                <StackPanel Grid.Column="1" Margin="10">
+                    <Label>Wetter</Label>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem IsSelected="True">Mock1</ComboBoxItem>
+                        <ComboBoxItem>Mock2</ComboBoxItem>
+                    </ComboBox>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <Label>Tageszeit</Label>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem IsSelected="True">Mock1</ComboBoxItem>
+                        <ComboBoxItem>Mock2</ComboBoxItem>
+                    </ComboBox>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <Button Padding="10">Bild Löschen</Button>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <CheckBox>
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                        </CheckBox.LayoutTransform>
+                        Verwendung ausschließen
+                    </CheckBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Row="0" Grid.Column="1" Margin="10"></Image>
+                        <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
+                            <TextBlock>22°C</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
+                            <TextBlock>Ort</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
+                            <TextBlock>Uhrzeit</TextBlock>
+                        </Viewbox>
+
+                    </Grid>
+
+                    <StackPanel Grid.Row="1" Margin="10">
+                        <Button Padding="10">Externe Bilder Laden</Button>
+                        <Grid Margin="0, 0, 0, 10"></Grid>
+                        <Label>Zeitzone</Label>
+                        <Grid Margin="0, 0, 0, 10"></Grid>
+                        <TextBox Padding="10">PLZ</TextBox>
+                    </StackPanel>
+                    
+                </Grid>
+
+                <StackPanel Grid.Column="1" Margin="10">
+                    <CheckBox>
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                        </CheckBox.LayoutTransform>
+                        Mit Windows Starten
+                    </CheckBox>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <CheckBox>
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                        </CheckBox.LayoutTransform>
+                        Nur im Hintergrund überblenden
+                    </CheckBox>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <CheckBox>
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                        </CheckBox.LayoutTransform>
+                        Automatische Bildersuche
+                    </CheckBox>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Padding="10" Grid.Column="0">15</TextBox>
+                        <TextBlock Padding="10"  Grid.Column="1">Maximale anzahl an Bildern</TextBlock>
+                    </Grid>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <Button Padding="10">Gesamten Bildcache Löschen</Button>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
+                    <Button Padding="10">Programm Beenden</Button>
+                </StackPanel>
+                
+            </Grid>
+
+        </Grid>
 
     </Grid>
 
