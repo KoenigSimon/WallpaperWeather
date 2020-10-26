@@ -15,30 +15,6 @@ namespace WallpaperWeather
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        //enums
-        public enum enumWeather
-        {
-            CLOUDS,
-            CLOUDSRAINY,
-            THUNDERSTORM,
-            SUNNY,
-            SUNNYCLOUDS
-        }
-        public enum enumdayTime
-        {
-            DAWN,
-            DUSK,
-            DAY,
-            NIGHT
-        }
-        public enum enumseason
-        {
-            SPRING,
-            SUMMER,
-            AUTUMN,
-            WINTER
-        }
-
         #region SelectedItem Properties
 
         private bool _chkBxBanUse;

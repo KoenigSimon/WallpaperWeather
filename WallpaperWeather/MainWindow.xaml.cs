@@ -29,7 +29,9 @@ namespace WallpaperWeather
         {
             DataContext = view;
             InitializeComponent();
+
             ImageCacheLoader.LoadImagesFromCache(Scroll);
+            SettingsLoader.LoadSettings();
 
 
             view.city = "testingen";
