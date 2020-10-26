@@ -21,35 +21,26 @@
                 <RowDefinition Height="1.5*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Name="SelectedItem">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.77*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.777*"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Column="0"  Margin="10" Stretch="Uniform" />
+                <Image Grid.Column="0"  Margin="10" Stretch="Uniform" Source="{Binding Path=imageSelection, Mode=OneWay}"/>
                 <StackPanel Grid.Column="1" Margin="10">
                     <Label>Wetter</Label>
-                    <ComboBox Grid.Column="1">
-                        <ComboBoxItem IsSelected="True">Mock1</ComboBoxItem>
-                        <ComboBoxItem>Mock2</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsWeather, Mode=OneWay}" SelectedItem="{Binding Path=selectedItemWeather, Mode=TwoWay}"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Label>Tageszeit</Label>
-                    <ComboBox Grid.Column="1">
-                        <ComboBoxItem IsSelected="True">Mock1</ComboBoxItem>
-                        <ComboBoxItem>Mock2</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsDayTime, Mode=OneWay}" SelectedItem="{Binding Path=selectedItemDayTime, Mode=TwoWay}"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Label>Jahreszeit</Label>
-                    <ComboBox Grid.Column="1">
-                        <ComboBoxItem IsSelected="True">Mock1</ComboBoxItem>
-                        <ComboBoxItem>Mock2</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsSeason, Mode=OneWay}" SelectedItem="{Binding Path=selectedItemSeason, Mode=TwoWay}"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Button Padding="10" Click="ClickDeleteImage">Bild Löschen</Button>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox IsChecked="{Binding Path=chkBxBanUse}">
+                    <CheckBox IsChecked="{Binding Path=chkBxBanUse, Mode=TwoWay}">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
@@ -64,7 +55,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="0" Name="Localization">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -82,13 +73,13 @@
 
                         <Image Grid.Row="0" Grid.Column="1" Margin="10" Source="{Binding Path=weatherIcon, Mode=OneWay}"></Image>
                         <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
-                            <TextBlock Text="{Binding Path=temperature, Mode=TwoWay}">22°C</TextBlock>
+                            <TextBlock Text="{Binding Path=temperature, Mode=OneWay}">22°C</TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
-                            <TextBlock Text="{Binding Path=city, Mode=TwoWay}">Stadt/Ort</TextBlock>
+                            <TextBlock Text="{Binding Path=city, Mode=OneWay}"></TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="1" Grid.Column="0" Margin="10">
-                            <TextBlock Text="{Binding Path=time, Mode=TwoWay}">Uhrzeit</TextBlock>
+                            <TextBlock Text="{Binding Path=time, Mode=OneWay}"></TextBlock>
                         </Viewbox>
 
                     </Grid>
@@ -96,14 +87,14 @@
                     <StackPanel Grid.Row="1" Margin="10">
                         <Button Padding="10" Click="ClickImportImages">Externe Bilder Laden</Button>
                         <Grid Margin="0, 0, 0, 10"></Grid>
-                        <Label Content="{Binding Path=timeZone, Mode=TwoWay}"></Label>
+                        <Label Content="{Binding Path=timeZone, Mode=OneWay}"></Label>
                         <Grid Margin="0, 0, 0, 10"></Grid>
                         <TextBox Padding="10" Text="{Binding Path=plz, Mode=TwoWay}"></TextBox>
                     </StackPanel>
                     
                 </Grid>
 
-                <StackPanel Grid.Column="1" Margin="10">
+                <StackPanel Grid.Column="1" Margin="10" Name="Options">
                     <CheckBox IsChecked="{Binding Path=chkBxStartWithWindows, Mode=TwoWay}">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
