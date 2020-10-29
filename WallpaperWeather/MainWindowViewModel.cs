@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Text;
 
 namespace WallpaperWeather
 {
@@ -230,6 +231,12 @@ namespace WallpaperWeather
             get { return _maxImageCount; }
             set
             {
+                //only numbers
+                byte[] asciiBytes = Encoding.ASCII.GetBytes(value);
+                for (int i = 0; i < asciiBytes.Length; i++)
+                {
+                    if (asciiBytes[i] < 48 || asciiBytes[i] > 57) return;
+                }
                 _maxImageCount = value;
                 OnPropertyChanged();
             }

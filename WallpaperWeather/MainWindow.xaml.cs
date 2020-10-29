@@ -33,6 +33,8 @@ namespace WallpaperWeather
             ImageCacheLoader.LoadImagesFromCache(Scroll);
             SettingsLoader.LoadSettings();
 
+            DisplaySettings(SettingsLoader.GetCurrentData());
+
 
             view.city = "testingen";
             view.time = "yeeettime";
@@ -41,7 +43,22 @@ namespace WallpaperWeather
             view.comboItemsWeather.Add("testitem");
             view.comboItemsWeather.Add("testite2m");
 
-        }      
+        }
+
+        private void OptionsUpdated(object sender, RoutedEventArgs e)
+        {
+            SettingsLoader.changedData.startWithWindows = view.chkBxStartWithWindows;
+            SettingsLoader.changedData.changeInBackground = view.chkBxChangeInBackground;
+            SettingsLoader.changedData.autoImageSearch = view.chkBxAutoImageSearch;
+            SettingsLoader.UpdateSettings();
+        }
+
+        private void TextOptionsUpdated(object sender, TextChangedEventArgs args)
+        {
+            SettingsLoader.changedData.maxImageCount = Convert.ToInt32(view.maxImageCount);
+            SettingsLoader.changedData.plz = view.plz;
+            SettingsLoader.UpdateSettings();
+        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -68,6 +85,17 @@ namespace WallpaperWeather
         private void ClickDeleteImage(object sender, RoutedEventArgs e)
         {
 
+        }
+        
+        private void DisplaySettings(PersistentData data)
+        {
+            PersistentData temp = new PersistentData(data);
+            view.timeZone = temp.timeZone;
+            view.plz = temp.plz;
+            view.maxImageCount = temp.maxImageCount.ToString();
+            view.chkBxStartWithWindows = (bool)temp.startWithWindows;
+            view.chkBxChangeInBackground = (bool)temp.changeInBackground;
+            view.chkBxAutoImageSearch = (bool)temp.autoImageSearch;
         }
     }
 }

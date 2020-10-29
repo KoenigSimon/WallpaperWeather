@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="771" Width="1420" Closing="Window_Closing">
 
-    <Grid x:Name="MainGrid" Background="#525559">
+    <Grid x:Name="MainGrid" Background="#aaaaaa">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -87,29 +87,29 @@
                     <StackPanel Grid.Row="1" Margin="10">
                         <Button Padding="10" Click="ClickImportImages">Externe Bilder Laden</Button>
                         <Grid Margin="0, 0, 0, 10"></Grid>
-                        <Label Content="{Binding Path=timeZone, Mode=OneWay}"></Label>
+                        <Label Content="{Binding Path=timeZone, Mode=OneWay}" ></Label>
                         <Grid Margin="0, 0, 0, 10"></Grid>
-                        <TextBox Padding="10" Text="{Binding Path=plz, Mode=TwoWay}"></TextBox>
+                        <TextBox Padding="10" Text="{Binding Path=plz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
                     </StackPanel>
                     
                 </Grid>
 
                 <StackPanel Grid.Column="1" Margin="10" Name="Options">
-                    <CheckBox IsChecked="{Binding Path=chkBxStartWithWindows, Mode=TwoWay}">
+                    <CheckBox IsChecked="{Binding Path=chkBxStartWithWindows, Mode=TwoWay}" Checked="OptionsUpdated" Unchecked="OptionsUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
                         Mit Windows Starten
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox IsChecked="{Binding Path=chkBxChangeInBackground, Mode=TwoWay}">
+                    <CheckBox IsChecked="{Binding Path=chkBxChangeInBackground, Mode=TwoWay}" Checked="OptionsUpdated" Unchecked="OptionsUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
                         Nur im Hintergrund überblenden
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox IsChecked="{Binding Path=chkBxAutoImageSearch, Mode=TwoWay}">
+                    <CheckBox IsChecked="{Binding Path=chkBxAutoImageSearch, Mode=TwoWay}" Checked="OptionsUpdated" Unchecked="OptionsUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
@@ -121,7 +121,7 @@
                             <ColumnDefinition Width="0.5*"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=maxImageCount, Mode=TwoWay}"></TextBox>
+                        <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=maxImageCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
                         <TextBlock Padding="10"  Grid.Column="1">Maximale anzahl an Bildern</TextBlock>
                     </Grid>
                     <Grid Margin="0, 0, 0, 10"></Grid>
