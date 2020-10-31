@@ -3,7 +3,7 @@
 
 # Added by user
 ImageCache/
-AuthData.cs
+WallpaperWeather/AuthData.cs
 
 # User-specific files
 *.suo
