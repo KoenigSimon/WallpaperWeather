@@ -16,6 +16,7 @@ using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
 
 namespace WallpaperWeather
 {
@@ -25,24 +26,35 @@ namespace WallpaperWeather
     public partial class MainWindow
     {
         MainWindowViewModel view = new MainWindowViewModel();
+        static WeatherHandler weatherHandler;
+
         public MainWindow()
         {
             DataContext = view;
             InitializeComponent();
+            InitializeApp();
+        }
 
+        private void InitializeApp()
+        {
             ImageCacheLoader.LoadImagesFromCache(Scroll);
+
             SettingsLoader.LoadSettings();
+            PersistentData currentData = SettingsLoader.GetCurrentData();
+            DisplaySettings(currentData);
 
-            DisplaySettings(SettingsLoader.GetCurrentData());
+            weatherHandler = new WeatherHandler(currentData.openWeatherMapAPIKey, currentData.plz);
+            DisplayWeatherData();
 
+            DispatcherTimer LiveTime = new DispatcherTimer();
+            LiveTime.Interval = TimeSpan.FromSeconds(1);
+            LiveTime.Tick += UpdateDataPeriodic;
+            LiveTime.Start();
 
-            view.city = "testingen";
-            view.time = "yeeettime";
-
+            //v kommt noch weg
             view.comboItemsWeather = new ObservableCollection<string>();
             view.comboItemsWeather.Add("testitem");
             view.comboItemsWeather.Add("testite2m");
-
         }
 
         private void OptionsUpdated(object sender, RoutedEventArgs e)
@@ -57,6 +69,7 @@ namespace WallpaperWeather
         {
             SettingsLoader.changedData.maxImageCount = Convert.ToInt32(view.maxImageCount);
             SettingsLoader.changedData.plz = view.plz;
+            SettingsLoader.changedData.openWeatherMapAPIKey = view.apiKey;
             SettingsLoader.UpdateSettings();
         }
 
@@ -96,6 +109,25 @@ namespace WallpaperWeather
             view.chkBxStartWithWindows = (bool)temp.startWithWindows;
             view.chkBxChangeInBackground = (bool)temp.changeInBackground;
             view.chkBxAutoImageSearch = (bool)temp.autoImageSearch;
+            view.apiKey = temp.openWeatherMapAPIKey;
+        }
+
+        private void DisplayWeatherData()
+        {
+            WeatherData data = weatherHandler.GetCurrentWeatherData();
+            if (data == null) return;
+
+            view.city = data.data.name;
+            view.timeZone = data.data.timezone.ToString(); //conversion needed
+            view.temperature = (int)(data.data.main.temp -273.15) + "°C";
+
+            view.weatherIcon = PathHandling.GetCorrespondingIconPath(Helperfunctions.ConvertOWMDescrToWeather(data.data.weather[0].description), true);
+        }
+
+        private void UpdateDataPeriodic(object sender, EventArgs e)
+        {
+            view.time = DateTime.Now.ToString("HH:mm");
+            DisplayWeatherData();
         }
     }
 }

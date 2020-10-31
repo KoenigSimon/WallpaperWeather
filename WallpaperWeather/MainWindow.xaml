@@ -73,7 +73,7 @@
 
                         <Image Grid.Row="0" Grid.Column="1" Margin="10" Source="{Binding Path=weatherIcon, Mode=OneWay}"></Image>
                         <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
-                            <TextBlock Text="{Binding Path=temperature, Mode=OneWay}">22°C</TextBlock>
+                            <TextBlock Text="{Binding Path=temperature, Mode=OneWay}"></TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="0" Grid.Column="0" Margin="10">
                             <TextBlock Text="{Binding Path=city, Mode=OneWay}"></TextBlock>
@@ -89,7 +89,14 @@
                         <Grid Margin="0, 0, 0, 10"></Grid>
                         <Label Content="{Binding Path=timeZone, Mode=OneWay}" ></Label>
                         <Grid Margin="0, 0, 0, 10"></Grid>
-                        <TextBox Padding="10" Text="{Binding Path=plz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=plz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
+                            <TextBlock Padding="10"  Grid.Column="1">Stadt</TextBlock>
+                        </Grid>
                     </StackPanel>
                     
                 </Grid>
@@ -109,7 +116,7 @@
                         Nur im Hintergrund überblenden
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox IsChecked="{Binding Path=chkBxAutoImageSearch, Mode=TwoWay}" Checked="OptionsUpdated" Unchecked="OptionsUpdated">
+                    <CheckBox IsEnabled="False" IsChecked="{Binding Path=chkBxAutoImageSearch, Mode=TwoWay}" Checked="OptionsUpdated" Unchecked="OptionsUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
@@ -121,7 +128,7 @@
                             <ColumnDefinition Width="0.5*"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=maxImageCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
+                        <TextBox  IsEnabled="False" Padding="10" Grid.Column="0" Text="{Binding Path=maxImageCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
                         <TextBlock Padding="10"  Grid.Column="1">Maximale anzahl an Bildern</TextBlock>
                     </Grid>
                     <Grid Margin="0, 0, 0, 10"></Grid>

@@ -11,11 +11,11 @@ namespace WallpaperWeather
         //enums
         public enum enumWeather
         {
-            CLOUDS,
-            CLOUDSRAINY,
-            THUNDERSTORM,
-            SUNNY,
-            SUNNYCLOUDS
+            CLEAR_SKY,
+            FEW_CLOUDS,
+            SCATTERED_CLOUDS,
+            SHOWER_RAIN,
+            THUNDERSTORM
         }
         public enum enumDayTime
         {

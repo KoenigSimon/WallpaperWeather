@@ -151,8 +151,8 @@ namespace WallpaperWeather
         }
 
 
-        private Image _weatherIcon;
-        public Image weatherIcon
+        private string _weatherIcon;
+        public string weatherIcon
         {
             get { return _weatherIcon; }
             set
