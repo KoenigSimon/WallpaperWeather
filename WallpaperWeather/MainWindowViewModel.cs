@@ -241,6 +241,17 @@ namespace WallpaperWeather
                 OnPropertyChanged();
             }
         }
+
+        private string _apiKey;
+        public string apiKey
+        {
+            get { return _apiKey; }
+            set
+            {
+                _apiKey = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
     }
 }

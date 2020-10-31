@@ -23,6 +23,7 @@ namespace WallpaperWeather
             startWithWindows = toClone.startWithWindows;
             changeInBackground = toClone.changeInBackground;
             autoImageSearch = toClone.autoImageSearch;
+            openWeatherMapAPIKey = toClone.openWeatherMapAPIKey;
         }
 
         public List<DataStructures.ImageData> imageData { get; set; }
@@ -32,6 +33,7 @@ namespace WallpaperWeather
         public bool? startWithWindows { get; set; }
         public bool? changeInBackground { get; set; }
         public bool? autoImageSearch { get; set; }
+        public string openWeatherMapAPIKey { get; set; }
 
         public void InitializeToDefaultValues()
         {
@@ -42,6 +44,7 @@ namespace WallpaperWeather
             startWithWindows = false;
             changeInBackground = false;
             autoImageSearch = false;
+            openWeatherMapAPIKey = "";
         }
 
         public void InitializeEmpty()
@@ -53,6 +56,7 @@ namespace WallpaperWeather
             startWithWindows = null;
             changeInBackground = null;
             autoImageSearch = null;
+            openWeatherMapAPIKey = "";
         }
 
     }

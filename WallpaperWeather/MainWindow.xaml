@@ -125,6 +125,15 @@
                         <TextBlock Padding="10"  Grid.Column="1">Maximale anzahl an Bildern</TextBlock>
                     </Grid>
                     <Grid Margin="0, 0, 0, 10"></Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=apiKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
+                        <TextBlock Padding="10"  Grid.Column="1">Open Weather Map API Schlüssel</TextBlock>
+                    </Grid>
+                    <Grid Margin="0, 0, 0, 10"></Grid>
                     <Button Padding="10" Click="ClickClearCache">Gesamten Bildcache Löschen</Button>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Button Padding="10" Click="ClickExit">Programm Beenden</Button>

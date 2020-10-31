@@ -74,6 +74,10 @@ namespace WallpaperWeather
             {
                 data.autoImageSearch = changedData.autoImageSearch;
             }
+            if(changedData.openWeatherMapAPIKey != "")
+            {
+                data.openWeatherMapAPIKey = changedData.openWeatherMapAPIKey;
+            }
 
             string jsonString = JsonSerializer.Serialize(data);
             File.WriteAllText(PathHandling.GetSettingsPath(), jsonString);
