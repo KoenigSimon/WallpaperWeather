@@ -118,7 +118,12 @@ namespace WallpaperWeather
             if (data == null) return;
 
             view.city = data.data.name;
-            view.timeZone = data.data.timezone.ToString(); //conversion needed
+
+            TimeSpan timeZone = TimeSpan.FromSeconds(data.data.timezone);
+            string relative = data.data.timezone >= 0 ? "GMT +" : "GMT -";
+            relative += string.Format("{0:D2}:{1:D2}", timeZone.Hours, timeZone.Minutes);
+            view.timeZone = relative;
+
             view.temperature = (int)(data.data.main.temp -273.15) + "°C";
 
             view.weatherIcon = PathHandling.GetCorrespondingIconPath(Helperfunctions.ConvertOWMDescrToWeather(data.data.weather[0].description), true);
