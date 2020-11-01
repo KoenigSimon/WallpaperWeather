@@ -31,11 +31,11 @@ namespace WallpaperWeather
             return success;
         }
 
-        public static string GetCorrespondingIconPath(DataStructures.enumWeather weather, bool dayTime)
+        public static string GetCorrespondingIconPath(DataStructures.enumWeather weather, bool beforeDusk)
         {
             string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
 
-            if(dayTime)
+            if(beforeDusk)
             {
                 switch (weather)
                 {
