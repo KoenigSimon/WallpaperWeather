@@ -21,7 +21,7 @@ namespace WallpaperWeather
 
             WrapPanel cachePanel = new WrapPanel();
 
-            cachePanel.SizeChanged += (s, args) => HandleResizing(cachePanel);
+            
 
             if(filePaths.Length == 0)
             {
@@ -31,6 +31,7 @@ namespace WallpaperWeather
             }
             else
             {
+                cachePanel.SizeChanged += (s, args) => HandleResizing(cachePanel);
                 for (int i = 0; i < filePaths.Length; i++)
                 {
                     Image img = new Image();
