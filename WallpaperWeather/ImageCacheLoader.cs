@@ -12,51 +12,47 @@ namespace WallpaperWeather
 {
     static class ImageCacheLoader
     {
-        public static void LoadImagesFromCache(ScrollViewer rootElement)
+        static string[] filePaths;
+
+        public  static WrapPanel LoadImages()
         {
             string cachePath = PathHandling.GetCachePath();
-            string[] filePaths = Directory.GetFiles(cachePath, "*.jpg");
+            filePaths = Directory.GetFiles(cachePath, "*.jpg");
 
-            if(filePaths.Length == 0)
-            {
-                //no cached files notification
-                Label noCacheLabel = new Label();
-                noCacheLabel.Content = "No cached files";
-                rootElement.Content = noCacheLabel;
-            }
-            else
-            {
-                GenerateList(filePaths, rootElement);
-            }            
-        }
-
-        private static void GenerateList(string[] filePaths, ScrollViewer rootElement)
-        {
             WrapPanel cachePanel = new WrapPanel();
 
             cachePanel.SizeChanged += (s, args) => HandleResizing(cachePanel);
 
-            for (int i = 0; i < filePaths.Length; i++)
+            if(filePaths.Length == 0)
             {
-                Image img = new Image();
-                img.Width = 300;
-                img.SnapsToDevicePixels = true;
-                BitmapImage image = new BitmapImage();
-                image.BeginInit();
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.UriSource = new Uri(filePaths[i], UriKind.Relative);
-                image.EndInit();
-                img.Source = image;
-
-                
-                img.MouseDown += (s, args) => MouseDown(img);
-                img.MouseEnter += (s, args) => MouseEnter(img);
-                img.MouseLeave += (s, args) => MouseLeave(img);
-
-                cachePanel.Children.Add(img);
+                Label noCacheLabel = new Label();
+                noCacheLabel.Content = "No cached files";
+                cachePanel.Children.Add(noCacheLabel);
             }
+            else
+            {
+                for (int i = 0; i < filePaths.Length; i++)
+                {
+                    Image img = new Image();
+                    img.Width = 300;
+                    img.SnapsToDevicePixels = true;
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = new Uri(filePaths[i], UriKind.Relative);
+                    image.EndInit();
+                    img.Source = image;
 
-            rootElement.Content = cachePanel;
+
+                    img.MouseDown += (s, args) => MouseDown(img);
+                    img.MouseEnter += (s, args) => MouseEnter(img);
+                    img.MouseLeave += (s, args) => MouseLeave(img);
+
+                    cachePanel.Children.Add(img);
+                }
+            }            
+
+            return cachePanel;
         }
 
 

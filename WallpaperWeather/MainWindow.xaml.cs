@@ -37,7 +37,7 @@ namespace WallpaperWeather
 
         private void InitializeApp()
         {
-            ImageCacheLoader.LoadImagesFromCache(Scroll);
+            Scroll.Content = ImageCacheLoader.LoadImages();
 
             SettingsLoader.LoadSettings();
             PersistentData currentData = SettingsLoader.GetCurrentData();

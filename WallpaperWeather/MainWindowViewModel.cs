@@ -30,8 +30,8 @@ namespace WallpaperWeather
         }
 
 
-        private Image _imageSelection;
-        public Image imageSelection
+        private string _imageSelection;
+        public string imageSelection
         {
             get { return _imageSelection;  }
             set {
