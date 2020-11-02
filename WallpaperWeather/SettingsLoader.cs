@@ -79,7 +79,11 @@ namespace WallpaperWeather
                 data.openWeatherMapAPIKey = changedData.openWeatherMapAPIKey;
             }
 
-            string jsonString = JsonSerializer.Serialize(data);
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+            string jsonString = JsonSerializer.Serialize(data, options);
             File.WriteAllText(PathHandling.GetSettingsPath(), jsonString);
         }
 

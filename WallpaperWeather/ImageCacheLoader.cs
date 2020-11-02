@@ -74,7 +74,7 @@ namespace WallpaperWeather
 
         private static void MouseDown(Image sender)
         {
-            //select image for more options
+            MainWindow.active.ImageClicked(sender);
         }
 
         private static void MouseEnter(Image sender)

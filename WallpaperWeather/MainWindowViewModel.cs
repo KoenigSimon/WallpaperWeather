@@ -77,8 +77,8 @@ namespace WallpaperWeather
         }
 
 
-        private string _selectedItemWeather;
-        public string selectedItemWeather
+        private int _selectedItemWeather;
+        public int selectedItemWeather
         {
             get { return _selectedItemWeather; }
             set
@@ -89,8 +89,8 @@ namespace WallpaperWeather
         }
 
 
-        private string _selectedItemDayTime;
-        public string selectedItemDayTime
+        private int _selectedItemDayTime;
+        public int selectedItemDayTime
         {
             get { return _selectedItemDayTime; }
             set
@@ -101,8 +101,8 @@ namespace WallpaperWeather
         }
 
 
-        private string _selectedItemSeason;
-        public string selectedItemSeason
+        private int _selectedItemSeason;
+        public int selectedItemSeason
         {
             get { return _selectedItemSeason; }
             set

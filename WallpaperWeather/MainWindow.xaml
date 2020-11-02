@@ -30,17 +30,17 @@
                 <Image Grid.Column="0"  Margin="10" Stretch="Uniform" Source="{Binding Path=imageSelection, Mode=OneWay}"/>
                 <StackPanel Grid.Column="1" Margin="10">
                     <Label>Wetter</Label>
-                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsWeather, Mode=OneWay}" SelectedItem="{Binding Path=selectedItemWeather, Mode=TwoWay}"></ComboBox>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsWeather, Mode=OneWay}" SelectedIndex="{Binding Path=selectedItemWeather, Mode=TwoWay}" SelectionChanged="ComboboxUpdated"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Label>Tageszeit</Label>
-                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsDayTime, Mode=OneWay}" SelectedItem="{Binding Path=selectedItemDayTime, Mode=TwoWay}"></ComboBox>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsDayTime, Mode=OneWay}" SelectedIndex="{Binding Path=selectedItemDayTime, Mode=TwoWay}" SelectionChanged="ComboboxUpdated"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Label>Jahreszeit</Label>
-                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsSeason, Mode=OneWay}" SelectedItem="{Binding Path=selectedItemSeason, Mode=TwoWay}"></ComboBox>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsSeason, Mode=OneWay}" SelectedIndex="{Binding Path=selectedItemSeason, Mode=TwoWay}" SelectionChanged="ComboboxUpdated"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Button Padding="10" Click="ClickDeleteImage">Bild Löschen</Button>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <CheckBox IsChecked="{Binding Path=chkBxBanUse, Mode=TwoWay}">
+                    <CheckBox IsChecked="{Binding Path=chkBxBanUse, Mode=TwoWay}" Click="BanUseUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>

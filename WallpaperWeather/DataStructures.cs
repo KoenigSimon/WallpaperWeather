@@ -34,11 +34,11 @@ namespace WallpaperWeather
 
         public struct ImageData
         {
-            public string fileName;
-            public enumWeather targetWeather;
-            public enumDayTime targetDaytime;
-            public enumSeason targetSeason;
-            bool banUse;
+            public string fileName { get; set; }
+            public enumWeather targetWeather { get; set; }
+            public enumDayTime targetDaytime { get; set; }
+            public enumSeason targetSeason { get; set; }
+            public bool banUse { get; set; }
         }
     }
 }

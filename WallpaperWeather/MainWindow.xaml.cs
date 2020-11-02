@@ -17,6 +17,7 @@ using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.Collections.ObjectModel;
 using System.Windows.Threading;
+using System.Windows.Forms;
 
 namespace WallpaperWeather
 {
@@ -27,10 +28,11 @@ namespace WallpaperWeather
     {
         MainWindowViewModel view = new MainWindowViewModel();
         static WeatherHandler weatherHandler;
-
+        public static MainWindow active;
         public MainWindow()
         {
             DataContext = view;
+            active = this;
             InitializeComponent();
             InitializeApp();
         }
@@ -51,10 +53,7 @@ namespace WallpaperWeather
             LiveTime.Tick += UpdateDataPeriodic;
             LiveTime.Start();
 
-            //v kommt noch weg
-            view.comboItemsWeather = new ObservableCollection<string>();
-            view.comboItemsWeather.Add("testitem");
-            view.comboItemsWeather.Add("testite2m");
+            FillComboboxes();
         }
 
         private void OptionsUpdated(object sender, RoutedEventArgs e)
@@ -71,6 +70,44 @@ namespace WallpaperWeather
             SettingsLoader.changedData.plz = view.plz;
             SettingsLoader.changedData.openWeatherMapAPIKey = view.apiKey;
             SettingsLoader.UpdateSettings();
+        }
+
+        private void ComboboxUpdated(object sender, SelectionChangedEventArgs args)
+        {
+            if (view.imageSelection == null || view.imageSelection == "") return;
+            PersistentData data = new PersistentData(SettingsLoader.GetCurrentData());
+
+            for (int i = 0; i < data.imageData.Count; i++)
+            {
+                if(data.imageData[i].fileName == view.imageSelection)
+                {
+                    DataStructures.ImageData temp = data.imageData[i];
+                    temp.targetDaytime = Helperfunctions.ConvertComboIntToDaytime(view.selectedItemDayTime);
+                    temp.targetSeason = Helperfunctions.ConvertComboIntToSeason(view.selectedItemSeason);
+                    temp.targetWeather = Helperfunctions.ConvertComboIntToWeather(view.selectedItemWeather);
+                    data.imageData[i] = temp;
+                    SettingsLoader.changedData = data;
+                    SettingsLoader.UpdateSettings();
+                }
+            }
+        }
+
+        private void BanUseUpdated(object sender, RoutedEventArgs e)
+        {
+            if (view.imageSelection == null || view.imageSelection == "") return;
+            PersistentData data = new PersistentData(SettingsLoader.GetCurrentData());
+
+            for (int i = 0; i < data.imageData.Count; i++)
+            {
+                if (data.imageData[i].fileName == view.imageSelection)
+                {
+                    DataStructures.ImageData temp = data.imageData[i];
+                    temp.banUse = view.chkBxBanUse;
+                    data.imageData[i] = temp;
+                    SettingsLoader.changedData = data;
+                    SettingsLoader.UpdateSettings();
+                }
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -112,6 +149,29 @@ namespace WallpaperWeather
             view.apiKey = temp.openWeatherMapAPIKey;
         }
 
+        private void FillComboboxes()
+        {
+            //Order is important
+            view.comboItemsWeather = new ObservableCollection<string>();
+            view.comboItemsWeather.Add("Sunny");
+            view.comboItemsWeather.Add("Light Clouds");
+            view.comboItemsWeather.Add("Clouds");
+            view.comboItemsWeather.Add("Rain");
+            view.comboItemsWeather.Add("Thunderstorm");
+
+            view.comboItemsSeason = new ObservableCollection<string>();
+            view.comboItemsSeason.Add("Spring");
+            view.comboItemsSeason.Add("Summer");
+            view.comboItemsSeason.Add("Autumn");
+            view.comboItemsSeason.Add("Winter");
+
+            view.comboItemsDayTime = new ObservableCollection<string>();
+            view.comboItemsDayTime.Add("Dawn");
+            view.comboItemsDayTime.Add("Day");
+            view.comboItemsDayTime.Add("Dusk");
+            view.comboItemsDayTime.Add("Night");
+        }
+
         private void DisplayWeatherData()
         {
             WeatherData data = weatherHandler.GetCurrentWeatherData();
@@ -133,6 +193,38 @@ namespace WallpaperWeather
         {
             view.time = DateTime.Now.ToString("HH:mm");
             DisplayWeatherData();
+        }
+
+        public void ImageClicked(Image sender)
+        {
+            string filePath = sender.Source.ToString();
+            view.imageSelection = filePath;
+            PersistentData data = SettingsLoader.GetCurrentData();
+
+            for (int i = 0; i < data.imageData.Count(); i++)
+            {
+                if (data.imageData[i].fileName == filePath)
+                {
+                    //update displayed imagedata
+                    view.selectedItemWeather = Helperfunctions.ConvertWeatherEnumToComboInt(data.imageData[i].targetWeather);
+                    view.selectedItemDayTime = Helperfunctions.ConvertDayTimeToComboInt(data.imageData[i].targetDaytime);
+                    view.selectedItemSeason = Helperfunctions.ConvertSeasonToComboInt(data.imageData[i].targetSeason);
+                    view.chkBxBanUse = data.imageData[i].banUse;
+                    return;
+                }
+            }
+
+            //file has no data yet, write entry
+            DataStructures.ImageData newEntry = new DataStructures.ImageData();
+            newEntry.fileName = filePath;
+            newEntry.targetDaytime = DataStructures.enumDayTime.DAWN;
+            newEntry.targetSeason = DataStructures.enumSeason.SPRING;
+            newEntry.targetWeather = DataStructures.enumWeather.CLEAR_SKY;
+            newEntry.banUse = false;
+            data.imageData.Add(newEntry);
+            SettingsLoader.changedData.imageData = data.imageData;
+            SettingsLoader.UpdateSettings();
+            ImageClicked(sender);
         }
     }
 }
