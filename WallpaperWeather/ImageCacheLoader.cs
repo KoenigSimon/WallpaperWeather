@@ -17,7 +17,11 @@ namespace WallpaperWeather
         public  static WrapPanel LoadImages()
         {
             string cachePath = PathHandling.GetCachePath();
-            filePaths = Directory.GetFiles(cachePath, "*.jpg");
+            List<string> fileList = new List<string>();
+            fileList.AddRange(Directory.GetFiles(cachePath, "*.jpg"));
+            fileList.AddRange(Directory.GetFiles(cachePath, "*.png"));
+            fileList.AddRange(Directory.GetFiles(cachePath, "*.bmp"));
+            filePaths = fileList.ToArray();
 
             WrapPanel cachePanel = new WrapPanel();
 

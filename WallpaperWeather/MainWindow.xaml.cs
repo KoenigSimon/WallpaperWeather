@@ -121,7 +121,8 @@ namespace WallpaperWeather
 
         private void ClickImportImages(object sender, RoutedEventArgs e)
         {
-
+            PathHandling.ImportFiles();
+            Scroll.Content = ImageCacheLoader.LoadImages();
         }
 
         private void ClickClearCache(object sender, RoutedEventArgs e)

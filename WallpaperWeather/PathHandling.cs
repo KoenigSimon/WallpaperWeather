@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace WallpaperWeather
 {    
@@ -13,7 +14,7 @@ namespace WallpaperWeather
         public static string GetCachePath()
         {
             string resPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string specificFolder = Path.Combine(resPath, "WallpaperWeather/Cache/");
+            string specificFolder = Path.Combine(resPath, "WallpaperWeather\\Cache\\");
             Directory.CreateDirectory(specificFolder);
             return specificFolder;
         }
@@ -21,7 +22,7 @@ namespace WallpaperWeather
         public static string GetSettingsPath()
         {
             string resPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string file = Path.Combine(resPath, "WallpaperWeather/settings.json");
+            string file = Path.Combine(resPath, "WallpaperWeather\\settings.json");
             return file;
         }
 
@@ -30,6 +31,43 @@ namespace WallpaperWeather
             bool success = File.Exists(filePath);           
             return success;
         }
+
+        public static void ImportFiles()
+        {
+            string[] files = OpenFileDialog();
+            string targetPath = GetCachePath();
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                string filename = Path.GetFileName(files[i]);
+                File.Copy(files[i], Path.Combine(targetPath, filename), true);
+            }
+        }
+
+        private static string[] OpenFileDialog()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+                openFileDialog.Multiselect = true;
+                openFileDialog.Title = "Image Browser";
+
+                // Set the file dialog to filter for graphics files.
+                openFileDialog.Filter =
+                    "Images (*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG|" +
+                    "All files (*.*)|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    return openFileDialog.FileNames;
+                }
+            }
+
+            return new string[0];
+        }
+
 
         public static string GetCorrespondingIconPath(DataStructures.enumWeather weather, bool beforeDusk)
         {
