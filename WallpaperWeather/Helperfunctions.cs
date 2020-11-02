@@ -5,6 +5,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.TextFormatting;
 
 namespace WallpaperWeather
 {
@@ -206,6 +207,35 @@ namespace WallpaperWeather
                 default:
                     return DataStructures.enumWeather.CLEAR_SKY;
             }
+        }
+
+        public static DataStructures.enumSeason ConvertDateToEnumSeason(DateTime date)
+        {
+            float value = (float)date.Month + date.Day / 100;   // <month>.<day(2 digit)>
+            if (value < 3.21 || value >= 12.22) return DataStructures.enumSeason.WINTER;   // Winter
+            if (value < 6.21) return DataStructures.enumSeason.SPRING; // Spring
+            if (value < 9.23) return DataStructures.enumSeason.SUMMER; // Summer
+            return DataStructures.enumSeason.AUTUMN;   // Autumn
+        }
+
+        public static DataStructures.enumDayTime ConvertTimeToDayTime(DateTime time, WeatherData currenWeather)
+        {
+            Int32 unixTimestamp = (Int32)(time.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            Int32 unixCorrected = unixTimestamp + currenWeather.data.timezone;
+            Int32 dawnTime = unixCorrected - currenWeather.data.sys.sunrise;
+            Int32 duskTime = unixCorrected - currenWeather.data.sys.sunset;
+
+            //half an hour around sunset and sunrise is considered dusk and dawn
+            if (dawnTime > -1800 && dawnTime < 1800)
+                return DataStructures.enumDayTime.DAWN;
+            else if (duskTime > -1800 && duskTime < 1800)
+                return DataStructures.enumDayTime.DUSK;
+            else if (dawnTime > 0 && duskTime < 0)
+                return DataStructures.enumDayTime.DAY;
+            else if (dawnTime < 0 && duskTime > 0)
+                return DataStructures.enumDayTime.NIGHT;
+            else
+                return DataStructures.enumDayTime.DAY;
         }
     }
 }

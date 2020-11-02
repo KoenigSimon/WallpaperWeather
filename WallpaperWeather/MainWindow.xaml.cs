@@ -54,6 +54,8 @@ namespace WallpaperWeather
             LiveTime.Start();
 
             FillComboboxes();
+
+            ImageChanger.StartImageCycling(weatherHandler);
         }
 
         private void OptionsUpdated(object sender, RoutedEventArgs e)
@@ -181,7 +183,7 @@ namespace WallpaperWeather
             view.city = data.data.name;
 
             TimeSpan timeZone = TimeSpan.FromSeconds(data.data.timezone);
-            string relative = data.data.timezone >= 0 ? "GMT +" : "GMT -";
+            string relative = data.data.timezone >= 0 ? "Timezone: GMT +" : "GMT -";
             relative += string.Format("{0:D2}:{1:D2}", timeZone.Hours, timeZone.Minutes);
             view.timeZone = relative;
 

@@ -95,7 +95,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=plz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
-                            <TextBlock Padding="10"  Grid.Column="1">City</TextBlock>
+                            <TextBlock Padding="10"  Grid.Column="1">City (requires restart)</TextBlock>
                         </Grid>
                     </StackPanel>
                     

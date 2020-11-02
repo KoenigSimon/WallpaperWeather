@@ -46,7 +46,7 @@ namespace WallpaperWeather
                 {
                     MakePoll();
 
-                    Thread.Sleep(6000);
+                    Thread.Sleep(60000);
                 }
             } catch
             {

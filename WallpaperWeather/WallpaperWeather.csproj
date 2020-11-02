@@ -62,14 +62,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppFocus.cs" />
     <Compile Include="DataStructures.cs" />
     <Compile Include="Helperfunctions.cs" />
     <Compile Include="ImageCacheLoader.cs" />
+    <Compile Include="ImageChanger.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PathHandling.cs" />
     <Compile Include="PersistentData.cs" />
     <Compile Include="SettingsLoader.cs" />
     <Compile Include="TrayHandler.cs" />
+    <Compile Include="Wallpaper.cs" />
     <Compile Include="WeatherData.cs" />
     <Compile Include="WeatherHandler.cs" />
     <Page Include="MainWindow.xaml">
