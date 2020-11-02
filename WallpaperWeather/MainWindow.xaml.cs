@@ -62,6 +62,7 @@ namespace WallpaperWeather
             SettingsLoader.changedData.changeInBackground = view.chkBxChangeInBackground;
             SettingsLoader.changedData.autoImageSearch = view.chkBxAutoImageSearch;
             SettingsLoader.UpdateSettings();
+            SettingsLoader.ApplyAutoStart();
         }
 
         private void TextOptionsUpdated(object sender, TextChangedEventArgs args)

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
+using Microsoft.Win32;
+
 
 namespace WallpaperWeather
 {
@@ -102,6 +104,19 @@ namespace WallpaperWeather
             }
 
             
+        }
+
+        public static void ApplyAutoStart()
+        {
+            RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if ((bool)data.startWithWindows)
+            {                
+                rkApp.SetValue("WallpaperWeather", System.Reflection.Assembly.GetExecutingAssembly().Location);
+            }
+            else
+            {
+                rkApp.DeleteValue("WallpaperWeather", false);
+            }
         }
     }
 }
