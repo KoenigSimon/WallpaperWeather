@@ -29,22 +29,22 @@
 
                 <Image Grid.Column="0"  Margin="10" Stretch="Uniform" Source="{Binding Path=imageSelection, Mode=OneWay}"/>
                 <StackPanel Grid.Column="1" Margin="10">
-                    <Label>Wetter</Label>
+                    <Label>Weather</Label>
                     <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsWeather, Mode=OneWay}" SelectedIndex="{Binding Path=selectedItemWeather, Mode=TwoWay}" SelectionChanged="ComboboxUpdated"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Label>Tageszeit</Label>
+                    <Label>Day Time</Label>
                     <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsDayTime, Mode=OneWay}" SelectedIndex="{Binding Path=selectedItemDayTime, Mode=TwoWay}" SelectionChanged="ComboboxUpdated"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Label>Jahreszeit</Label>
+                    <Label>Season</Label>
                     <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsSeason, Mode=OneWay}" SelectedIndex="{Binding Path=selectedItemSeason, Mode=TwoWay}" SelectionChanged="ComboboxUpdated"></ComboBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Button Padding="10" Click="ClickDeleteImage">Bild Löschen</Button>
+                    <Button Padding="10" Click="ClickDeleteImage">Delete Image</Button>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <CheckBox IsChecked="{Binding Path=chkBxBanUse, Mode=TwoWay}" Click="BanUseUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
-                        Verwendung ausschließen
+                        Do not use
                     </CheckBox>
                 </StackPanel>
             </Grid>
@@ -85,7 +85,7 @@
                     </Grid>
 
                     <StackPanel Grid.Row="1" Margin="10">
-                        <Button Padding="10" Click="ClickImportImages">Externe Bilder Laden</Button>
+                        <Button Padding="10" Click="ClickImportImages">Load external images</Button>
                         <Grid Margin="0, 0, 0, 10"></Grid>
                         <Label Content="{Binding Path=timeZone, Mode=OneWay}" ></Label>
                         <Grid Margin="0, 0, 0, 10"></Grid>
@@ -95,7 +95,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=plz, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
-                            <TextBlock Padding="10"  Grid.Column="1">Stadt</TextBlock>
+                            <TextBlock Padding="10"  Grid.Column="1">City</TextBlock>
                         </Grid>
                     </StackPanel>
                     
@@ -106,21 +106,21 @@
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
-                        Mit Windows Starten
+                        Start with Windows
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <CheckBox IsChecked="{Binding Path=chkBxChangeInBackground, Mode=TwoWay}" Checked="OptionsUpdated" Unchecked="OptionsUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
-                        Nur im Hintergrund überblenden
+                        Only transition in background
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <CheckBox IsEnabled="False" IsChecked="{Binding Path=chkBxAutoImageSearch, Mode=TwoWay}" Checked="OptionsUpdated" Unchecked="OptionsUpdated">
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
                         </CheckBox.LayoutTransform>
-                        Automatische Bildersuche
+                        Automatic image search
                     </CheckBox>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Grid>
@@ -129,7 +129,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBox  IsEnabled="False" Padding="10" Grid.Column="0" Text="{Binding Path=maxImageCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
-                        <TextBlock Padding="10"  Grid.Column="1">Maximale anzahl an Bildern</TextBlock>
+                        <TextBlock Padding="10"  Grid.Column="1">Maximum amount of images</TextBlock>
                     </Grid>
                     <Grid Margin="0, 0, 0, 10"></Grid>
                     <Grid>
@@ -138,12 +138,12 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBox Padding="10" Grid.Column="0" Text="{Binding Path=apiKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextOptionsUpdated"></TextBox>
-                        <TextBlock Padding="10"  Grid.Column="1">Open Weather Map API Schlüssel</TextBlock>
+                        <TextBlock Padding="10"  Grid.Column="1">Open Weather Map API key</TextBlock>
                     </Grid>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Button Padding="10" Click="ClickClearCache">Gesamten Bildcache Löschen</Button>
+                    <Button Padding="10" Click="ClickClearCache">Delete image cache</Button>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Button Padding="10" Click="ClickExit">Programm Beenden</Button>
+                    <Button Padding="10" Click="ClickExit">Exit application</Button>
                 </StackPanel>
                 
             </Grid>
