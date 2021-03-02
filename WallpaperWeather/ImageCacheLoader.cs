@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace WallpaperWeather
@@ -60,6 +61,25 @@ namespace WallpaperWeather
             return cachePanel;
         }
 
+        public static void UnloadImage(string file, WrapPanel imageList)
+        {
+            UIElementCollection images = imageList.Children;
+            UIElement target = new UIElement();
+            foreach(UIElement i in images)
+            {
+                Image temp = (Image)i;
+                BitmapImage tmpBmp = (BitmapImage)temp.Source;
+                Uri filePath = new Uri(file);
+                if (tmpBmp.UriSource.OriginalString == file)
+                {
+                    target = i;
+                    temp.Source = null;
+                    break;
+                }                    
+            }
+            
+            images.Remove(target);
+        }
 
         private static void HandleResizing(WrapPanel target)
         {

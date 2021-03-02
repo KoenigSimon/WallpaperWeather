@@ -68,6 +68,10 @@ namespace WallpaperWeather
             return new string[0];
         }
 
+        public static void DeleteFile(string name)
+        {
+            File.Delete(name);
+        }
 
         public static string GetCorrespondingIconPath(DataStructures.enumWeather weather, bool beforeDusk)
         {

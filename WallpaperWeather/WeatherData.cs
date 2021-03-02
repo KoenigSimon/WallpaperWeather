@@ -11,6 +11,17 @@ namespace WallpaperWeather
         //used online converter, source: https://json2csharp.com/ <3 huge time saver
         public Root data = new Root();
 
+        public WeatherData()
+        {
+            data.clouds = new Clouds();
+            data.sys = new Sys();
+            data.wind = new Wind();
+            data.main = new Main();
+            data.coord = new Coord();
+            data.weather = new List<Weather>();
+            data.weather.Add(new Weather());
+        }
+
         public class Coord
         {
             public double lon { get; set; }

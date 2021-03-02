@@ -49,7 +49,7 @@ namespace WallpaperWeather
             DisplayWeatherData();
 
             DispatcherTimer LiveTime = new DispatcherTimer();
-            LiveTime.Interval = TimeSpan.FromSeconds(1);
+            LiveTime.Interval = TimeSpan.FromSeconds(3600);
             LiveTime.Tick += UpdateDataPeriodic;
             LiveTime.Start();
 
@@ -122,6 +122,7 @@ namespace WallpaperWeather
         private void ClickImportImages(object sender, RoutedEventArgs e)
         {
             PathHandling.ImportFiles();
+            Scroll.Content = null;
             Scroll.Content = ImageCacheLoader.LoadImages();
         }
 
@@ -138,7 +139,22 @@ namespace WallpaperWeather
 
         private void ClickDeleteImage(object sender, RoutedEventArgs e)
         {
+            if (view.imageSelection == null || view.imageSelection == "") return;
+            PersistentData data = new PersistentData(SettingsLoader.GetCurrentData());
 
+            //dont delete active wallpaper
+            if (new Uri(view.imageSelection) == new Uri(Wallpaper.active)) return;
+
+            for (int i = 0; i < data.imageData.Count; i++)
+            {
+                if (data.imageData[i].fileName == view.imageSelection)
+                {
+                    ImageCacheLoader.UnloadImage(data.imageData[i].fileName, (WrapPanel)Scroll.Content);
+                    SelectedImageBox.Source = null;
+                    PathHandling.DeleteFile(data.imageData[i].fileName);
+                    return;
+                }
+            }
         }
         
         private void DisplaySettings(PersistentData data)
@@ -203,6 +219,12 @@ namespace WallpaperWeather
         {
             string filePath = sender.Source.ToString();
             view.imageSelection = filePath;
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.UriSource = new Uri(filePath);
+            image.EndInit();
+            SelectedImageBox.Source = image;
             PersistentData data = SettingsLoader.GetCurrentData();
 
             for (int i = 0; i < data.imageData.Count(); i++)

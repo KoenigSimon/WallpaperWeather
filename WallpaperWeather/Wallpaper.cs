@@ -11,6 +11,8 @@ namespace WallpaperWeather
 {
     public sealed class Wallpaper
     {
+        public static string active;
+
         const int SPI_SETDESKWALLPAPER = 20;
         const int SPIF_UPDATEINIFILE = 0x01;
         const int SPIF_SENDWININICHANGE = 0x02;
@@ -28,6 +30,7 @@ namespace WallpaperWeather
         public static void Set(Uri uri, Style style)
         {
             System.IO.Stream s = new System.Net.WebClient().OpenRead(uri.ToString());
+            active = uri.AbsolutePath;
 
             System.Drawing.Image img = System.Drawing.Image.FromStream(s);
             string tempPath = Path.Combine(Path.GetTempPath(), "wallpaper.bmp");

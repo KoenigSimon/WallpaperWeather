@@ -27,7 +27,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Column="0"  Margin="10" Stretch="Uniform" Source="{Binding Path=imageSelection, Mode=OneWay}"/>
+                <Image x:Name="SelectedImageBox" Grid.Column="0"  Margin="10" Stretch="Uniform" />
                 <StackPanel Grid.Column="1" Margin="10">
                     <Label>Weather</Label>
                     <ComboBox Grid.Column="1" ItemsSource="{Binding Path=comboItemsWeather, Mode=OneWay}" SelectedIndex="{Binding Path=selectedItemWeather, Mode=TwoWay}" SelectionChanged="ComboboxUpdated"></ComboBox>

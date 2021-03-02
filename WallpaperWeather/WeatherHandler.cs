@@ -27,7 +27,7 @@ namespace WallpaperWeather
             MakePoll();
 
             Thread updatingThread = new Thread(new ThreadStart(WeatherPoller));
-            //updatingThread.Start();
+            updatingThread.Start();
         }
 
         public WeatherData GetCurrentWeatherData()
@@ -35,7 +35,7 @@ namespace WallpaperWeather
             if (dataReady)
                 return currentWeatherData;
             else
-                return null;
+                return new WeatherData();
         }
 
         private static void WeatherPoller()
