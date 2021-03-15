@@ -45,11 +45,11 @@ namespace WallpaperWeather
             PersistentData currentData = SettingsLoader.GetCurrentData();
             DisplaySettings(currentData);
 
+            //weather data
             weatherHandler = new WeatherHandler(currentData.openWeatherMapAPIKey, currentData.plz);
-            DisplayWeatherData();
-
             DispatcherTimer LiveTime = new DispatcherTimer();
-            LiveTime.Interval = TimeSpan.FromSeconds(3600);
+            UpdateDataPeriodic(this, null); //show immediatly after application start, then start thread
+            LiveTime.Interval = TimeSpan.FromSeconds(30);
             LiveTime.Tick += UpdateDataPeriodic;
             LiveTime.Start();
 
@@ -124,11 +124,6 @@ namespace WallpaperWeather
             PathHandling.ImportFiles();
             Scroll.Content = null;
             Scroll.Content = ImageCacheLoader.LoadImages();
-        }
-
-        private void ClickClearCache(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void ClickExit(object sender, RoutedEventArgs e)

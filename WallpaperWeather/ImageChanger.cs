@@ -103,7 +103,7 @@ namespace WallpaperWeather
 
         private static void Wait()
         {
-            Thread.Sleep(6000);
+            Thread.Sleep(3600000);
         }
     }
 }

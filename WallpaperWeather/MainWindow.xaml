@@ -141,8 +141,6 @@
                         <TextBlock Padding="10"  Grid.Column="1">Open Weather Map API key</TextBlock>
                     </Grid>
                     <Grid Margin="0, 0, 0, 10"></Grid>
-                    <Button Padding="10" Click="ClickClearCache">Delete image cache</Button>
-                    <Grid Margin="0, 0, 0, 10"></Grid>
                     <Button Padding="10" Click="ClickExit">Exit application</Button>
                 </StackPanel>
                 
