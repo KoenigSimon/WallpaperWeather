@@ -199,7 +199,8 @@ namespace WallpaperWeather
             relative += string.Format("{0:D2}:{1:D2}", timeZone.Hours, timeZone.Minutes);
             view.timeZone = relative;
 
-            view.temperature = (int)(data.data.main.temp -273.15) + "°C";
+            if (data.data.main.temp == 0) view.temperature = "-";
+            else view.temperature = (int)(data.data.main.temp - 273.15) + "°C";
 
             view.weatherIcon = PathHandling.GetCorrespondingIconPath(Helperfunctions.ConvertOWMDescrToWeather(data.data.weather[0].description), true);
         }
