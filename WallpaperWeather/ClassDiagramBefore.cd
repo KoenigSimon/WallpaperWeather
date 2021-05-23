@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WallpaperWeather.DataStructures">
+    <Position X="8" Y="4.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="WallpaperWeather.DataStructures.enumWeather" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataStructures.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="WallpaperWeather.DataStructures.enumDayTime" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataStructures.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="WallpaperWeather.DataStructures.enumSeason" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataStructures.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="WallpaperWeather.DataStructures.ImageData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataStructures.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataStructures.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.Wallpaper">
+    <Position X="10" Y="4.25" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="WallpaperWeather.Wallpaper.Style" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Wallpaper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAFBAAAAAAAAAAAAAMAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Wallpaper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.WeatherData">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="WallpaperWeather.WeatherData.Coord" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WeatherData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="WallpaperWeather.WeatherData.Weather" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WeatherData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="WallpaperWeather.WeatherData.Main" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WeatherData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="WallpaperWeather.WeatherData.Wind" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WeatherData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="WallpaperWeather.WeatherData.Clouds" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WeatherData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="WallpaperWeather.WeatherData.Sys" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WeatherData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="WallpaperWeather.WeatherData.Root" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WeatherData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>WeatherData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.WeatherHandler">
+    <Position X="3.25" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgCAAAIAAAAgAAAAAAAAAAAAAAACQAAAAAAIAAAAA=</HashCode>
+      <FileName>WeatherHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="currentWeatherData" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WallpaperWeather.TrayHandler">
+    <Position X="8" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAgAAAAAAAAAAAAAAAgACAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>TrayHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.SettingsLoader">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQAAAAAIAAAAAAIAAAAAAAAAAAEAAQAAAAAIA=</HashCode>
+      <FileName>SettingsLoader.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="data" />
+      <Field Name="changedData" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WallpaperWeather.PersistentData">
+    <Position X="9" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>CAAABigBAAAAAAAAgAAAAgAAAAABAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>PersistentData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.PathHandling">
+    <Position X="2.25" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAEAACAAAAAAEAAAAAABAEAAAEAAAA=</HashCode>
+      <FileName>PathHandling.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.MainWindowViewModel">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAABBgACEBAgAgCAoRABXkIAyAAQACCAIA4AQQASBAA=</HashCode>
+      <FileName>MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WallpaperWeather.ImageChanger">
+    <Position X="3.25" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAgAAAQAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ImageChanger.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="weatherHandler" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WallpaperWeather.ImageCacheLoader">
+    <Position X="4.25" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAgAACABAAAAAEEAAABAAAAAAAAA=</HashCode>
+      <FileName>ImageCacheLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.Helperfunctions">
+    <Position X="6.5" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAKAAAAAABIAAAABAAAAAAAAAAAAIAAACAAA=</HashCode>
+      <FileName>Helperfunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.AppFocus">
+    <Position X="0.5" Y="10.25" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="WallpaperWeather.AppFocus.RECT" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AppFocus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAIAAEAQgAAAAAAAAAAAAAAAgAI=</HashCode>
+      <FileName>AppFocus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallpaperWeather.MainWindow">
+    <Position X="3.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABgBAAAAAAAIBQAgAAAAAAAQAoEAwAAIAgAAAQ=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="view" />
+      <Field Name="weatherHandler" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
