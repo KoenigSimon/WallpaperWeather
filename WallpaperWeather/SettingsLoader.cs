@@ -89,7 +89,7 @@ namespace WallpaperWeather
             File.WriteAllText(PathHandling.GetSettingsPath(), jsonString);
         }
 
-        public static PersistentData GetCurrentData()
+        public static PersistentData GetCurrentSettingsData()
         {
             string path = PathHandling.GetSettingsPath();
             if (PathHandling.CheckIfFileExists(path))

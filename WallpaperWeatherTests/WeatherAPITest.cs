@@ -14,7 +14,7 @@ namespace WallpaperWeatherTests
         public void TestInit()
         {
             SettingsLoader.LoadSettings();
-            PersistentData currentData = SettingsLoader.GetCurrentData();
+            PersistentData currentData = SettingsLoader.GetCurrentSettingsData();
 
             WeatherHandler weather = new WeatherHandler(currentData.openWeatherMapAPIKey, currentData.plz);
             WeatherData data = weather.GetCurrentWeatherData();

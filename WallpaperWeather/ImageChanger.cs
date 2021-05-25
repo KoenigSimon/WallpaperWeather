@@ -27,7 +27,7 @@ namespace WallpaperWeather
                 {
                     WeatherData currentWeather = weatherHandler.GetCurrentWeatherData();
                     DateTime now = DateTime.Now;
-                    PersistentData currentSettings = SettingsLoader.GetCurrentData();
+                    PersistentData currentSettings = SettingsLoader.GetCurrentSettingsData();
 
                     //check if transition allowed
                     if((bool)currentSettings.changeInBackground)

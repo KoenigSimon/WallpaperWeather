@@ -12,16 +12,16 @@ namespace WallpaperWeatherTests
         [TestMethod]
         public void TestInitializing()
         {
-            PersistentData data = SettingsLoader.GetCurrentData();
+            PersistentData data = SettingsLoader.GetCurrentSettingsData();
             Assert.IsNotNull(data);
         }
 
         [TestMethod]
         public void TestLoading()
         {
-            PersistentData data = SettingsLoader.GetCurrentData();
+            PersistentData data = SettingsLoader.GetCurrentSettingsData();
             SettingsLoader.LoadSettings();
-            PersistentData data2 = SettingsLoader.GetCurrentData();
+            PersistentData data2 = SettingsLoader.GetCurrentSettingsData();
 
             Assert.AreNotEqual(data, data2);
         }
