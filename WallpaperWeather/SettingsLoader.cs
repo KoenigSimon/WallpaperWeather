@@ -17,7 +17,7 @@ namespace WallpaperWeather
         static PersistentData data = new PersistentData();
         public static PersistentData changedData = new PersistentData();
 
-        public static void LoadSettings()
+        public static void LoadSettingsFromDisk()
         {
             data = new PersistentData();
             string path = PathHandling.GetSettingsPath();

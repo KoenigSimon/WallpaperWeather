@@ -20,7 +20,7 @@ namespace WallpaperWeatherTests
         public void TestLoading()
         {
             PersistentData data = SettingsLoader.GetCurrentSettingsData();
-            SettingsLoader.LoadSettings();
+            SettingsLoader.LoadSettingsFromDisk();
             PersistentData data2 = SettingsLoader.GetCurrentSettingsData();
 
             Assert.AreNotEqual(data, data2);

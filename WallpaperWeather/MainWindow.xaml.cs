@@ -41,7 +41,7 @@ namespace WallpaperWeather
         {
             Scroll.Content = ImageCacheLoader.LoadImages();
 
-            SettingsLoader.LoadSettings();
+            SettingsLoader.LoadSettingsFromDisk();
             PersistentData currentData = SettingsLoader.GetCurrentSettingsData();
             DisplaySettings(currentData);
 
