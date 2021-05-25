@@ -98,12 +98,8 @@ namespace WallpaperWeather
                 data = JsonSerializer.Deserialize<PersistentData>(jsonString);
                 return data;
             }
-            else
-            {
-                return null;
-            }
 
-            
+            return null;
         }
 
         public static void ApplyAutoStart()
